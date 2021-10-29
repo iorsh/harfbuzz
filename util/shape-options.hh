@@ -55,7 +55,6 @@ struct shape_options_t
 				  (remove_default_ignorables ? HB_BUFFER_FLAG_REMOVE_DEFAULT_IGNORABLES : 0) |
 				  0));
     hb_buffer_set_invisible_glyph (buffer, invisible_glyph);
-    hb_buffer_set_target_length(buffer, -1);
     hb_buffer_set_cluster_level (buffer, cluster_level);
     hb_buffer_guess_segment_properties (buffer);
   }
