@@ -53,6 +53,15 @@ hb_shape_full (hb_font_t          *font,
 	       unsigned int        num_features,
 	       const char * const *shaper_list);
 
+/* TODO(iorsh): support multiple buffers */
+HB_EXTERN void
+hb_justify (hb_font_t           *font,
+	        hb_buffer_t         *buffer,
+			unsigned int         num_target_lengths,
+			const hb_position_t *target_lengths,
+	        const hb_feature_t  *features,
+	        unsigned int         num_features);
+
 HB_EXTERN const char **
 hb_shape_list_shapers (void);
 

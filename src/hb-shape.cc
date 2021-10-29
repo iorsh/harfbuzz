@@ -160,3 +160,35 @@ hb_shape (hb_font_t           *font,
 {
   hb_shape_full (font, buffer, features, num_features, nullptr);
 }
+
+/**
+ * hb_justify:
+ * @font: an #hb_font_t to use for shaping
+ * @buffer: an #hb_buffer_t to shape
+ * @num_target_lengths: the length of @target_lengths array
+ * @target_lengths: line lengths for justification of buffer over multiple
+ *    lines.
+ * @features: (array length=num_features) (nullable): an array of user
+ *    specified #hb_feature_t or %NULL
+ * @num_features: the length of @features array
+ *
+ * See hb_shape() for details. If the shaped buffer takes more lines than the
+ * specified @num_target_lengths, the justified shaping will continue with the
+ * last value from @target_lengths.
+ *
+ **/
+void
+hb_justify (hb_font_t         *font,
+	        hb_buffer_t         *buffer,
+			    unsigned int         num_target_lengths,
+			    const hb_position_t *target_lengths,
+	        const hb_feature_t  *features,
+	        unsigned int         num_features)
+{
+  if (num_target_lengths == 0){
+    return;
+  }
+
+  /* TODO(iorsh): Implement */
+  hb_shape_full (font, buffer, features, num_features, nullptr);
+}
