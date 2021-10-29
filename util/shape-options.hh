@@ -105,7 +105,11 @@ struct shape_options_t
       hb_buffer_append (text_buffer, buffer, 0, -1);
     }
 
-    if (!hb_shape_full (font, buffer, features, num_features, shapers))
+    if (target_length > 0)
+    {
+      hb_justify (font, buffer, 1, &target_length, features, num_features);
+    }
+    else if (!hb_shape_full (font, buffer, features, num_features, shapers))
     {
       if (error)
 	*error = "All shapers failed.";
@@ -308,6 +312,7 @@ struct shape_options_t
   hb_buffer_cluster_level_t cluster_level = HB_BUFFER_CLUSTER_LEVEL_DEFAULT;
   hb_bool_t normalize_glyphs = false;
   hb_bool_t verify = false;
+  hb_position_t target_length = 0;
   unsigned int num_iterations = 1;
 };
 
@@ -431,6 +436,7 @@ shape_options_t::add_options (option_parser_t *parser)
     {"cluster-level",	0, 0, G_OPTION_ARG_INT,		&this->cluster_level,		"Cluster merging level (default: 0)",	"0/1/2"},
     {"normalize-glyphs",0, 0, G_OPTION_ARG_NONE,	&this->normalize_glyphs,	"Rearrange glyph clusters in nominal order",	nullptr},
     {"verify",		0, 0, G_OPTION_ARG_NONE,	&this->verify,			"Perform sanity checks on shaping results",	nullptr},
+    {"target-length",	0, 0, G_OPTION_ARG_INT,		&this->target_length,		"Target justified line length (default: no justification)",	"0"},
     {"num-iterations", 'n', G_OPTION_FLAG_IN_MAIN,
 			      G_OPTION_ARG_INT,		&this->num_iterations,		"Run shaper N times (default: 1)",	"N"},
     {nullptr}
