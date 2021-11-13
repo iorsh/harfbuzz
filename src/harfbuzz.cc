@@ -8,6 +8,7 @@
 #include "hb-face.cc"
 #include "hb-fallback-shape.cc"
 #include "hb-font.cc"
+#include "hb-justification.cc"
 #include "hb-map.cc"
 #include "hb-ms-feature-ranges.cc"
 #include "hb-number.cc"

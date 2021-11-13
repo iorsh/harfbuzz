@@ -33,6 +33,7 @@
 #include "hb-buffer.hh"
 #include "hb-font.hh"
 #include "hb-machinery.hh"
+#include "hb-justification.h"
 
 
 /**
@@ -189,6 +190,13 @@ hb_justify (hb_font_t         *font,
     return;
   }
 
-  /* TODO(iorsh): Implement */
+  /* First pass - perform ordinary shaping without justification */
   hb_shape_full (font, buffer, features, num_features, nullptr);
+
+  hb_codepoint_t space;
+  font->get_nominal_glyph (' ', &space);
+
+  hb_split_buffer_to_lines (buffer, num_target_lengths, target_lengths, space);
+
+  /* TODO(iorsh): Implement justification of each line*/
 }

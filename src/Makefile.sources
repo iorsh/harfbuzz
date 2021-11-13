@@ -45,6 +45,8 @@ HB_BASE_sources = \
 	hb-font.cc \
 	hb-font.hh \
 	hb-iter.hh \
+	hb-justification.cc \
+	hb-justification.h \
 	hb-kern.hh \
 	hb-machinery.hh \
 	hb-map.cc \
