@@ -33,6 +33,7 @@ in_house_tests = [
   'indic-syllable.tests',
   'indic-vowel-letter-spoofing.tests',
   'item-context.tests',
+  'justification.tests',
   'kern-format2.tests',
   'khmer-mark-order.tests',
   'khmer-misc.tests',

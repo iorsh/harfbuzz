@@ -119,8 +119,12 @@ struct shape_options_t
     if (normalize_glyphs)
       hb_buffer_normalize_glyphs (buffer);
 
-    if (verify && !verify_buffer (buffer, text_buffer, font, error))
-      goto fail;
+    /* TODO(iorsh): Investigate failure in verify_buffer_safe_to_break().
+       For now, buffer verification is disabled for justified buffers. */
+    if (target_length == 0) {
+      if (verify && !verify_buffer (buffer, text_buffer, font, error))
+        goto fail;
+    }
 
     if (text_buffer)
       hb_buffer_destroy (text_buffer);

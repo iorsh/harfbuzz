@@ -33,6 +33,7 @@ TESTS = \
 	tests/indic-syllable.tests \
 	tests/indic-vowel-letter-spoofing.tests \
 	tests/item-context.tests \
+	tests/justification.tests \
 	tests/kern-format2.tests \
 	tests/khmer-mark-order.tests \
 	tests/khmer-misc.tests \
